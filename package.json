@@ -1,0 +1,36 @@
+{
+  "name": "auditlens",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-assisted smart contract auditor: Slither finds, Gemma 4 explains, code verifies.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "audit": "tsx scripts/audit.ts",
+    "benchmark": "tsx scripts/benchmark.ts",
+    "ci": "tsx scripts/ci.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "diff": "^9.0.0",
+    "next": "15.5.4",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "solc": "^0.8.38",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.7",
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@types/three": "^0.187.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}

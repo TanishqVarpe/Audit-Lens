@@ -1,0 +1,260 @@
+{
+  "generated_at": "2026-10-31T08:56:27.800Z",
+  "analyzer": "slither 0.11.6",
+  "model": "gemma-4-26b-a4b-it",
+  "mode": "full",
+  "rule": "Findings of severity low and above count. A finding is correct if it is in the right file, on the bug line (±2) or in the same function, and names the right category. Duplicates of one bug count once.",
+  "cases": [
+    {
+      "case": "airdrop-dos",
+      "labels": 1,
+      "slither": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predictions": 1,
+        "precision": 1,
+        "recall": 1,
+        "found": [
+          "dos"
+        ]
+      },
+      "auditlens": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predictions": 1,
+        "precision": 1,
+        "recall": 1,
+        "found": [
+          "dos"
+        ]
+      }
+    },
+    {
+      "case": "reentrancy-bank",
+      "labels": 1,
+      "slither": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predictions": 1,
+        "precision": 1,
+        "recall": 1,
+        "found": [
+          "reentrancy"
+        ]
+      },
+      "auditlens": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predictions": 1,
+        "precision": 1,
+        "recall": 1,
+        "found": [
+          "reentrancy"
+        ]
+      }
+    },
+    {
+      "case": "safe-vault",
+      "labels": 0,
+      "slither": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "predictions": 0,
+        "precision": null,
+        "recall": null,
+        "found": []
+      },
+      "auditlens": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "predictions": 0,
+        "precision": null,
+        "recall": null,
+        "found": []
+      }
+    },
+    {
+      "case": "tx-origin-wallet",
+      "labels": 1,
+      "slither": {
+        "tp": 1,
+        "fp": 2,
+        "fn": 0,
+        "predictions": 3,
+        "precision": 0.3333333333333333,
+        "recall": 1,
+        "found": [
+          "tx-origin"
+        ]
+      },
+      "auditlens": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 0,
+        "predictions": 2,
+        "precision": 0.5,
+        "recall": 1,
+        "found": [
+          "tx-origin"
+        ]
+      }
+    },
+    {
+      "case": "unchecked-calls",
+      "labels": 2,
+      "slither": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 0,
+        "predictions": 3,
+        "precision": 0.6666666666666666,
+        "recall": 1,
+        "found": [
+          "unchecked-call",
+          "unchecked-call"
+        ]
+      },
+      "auditlens": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 0,
+        "predictions": 3,
+        "precision": 0.6666666666666666,
+        "recall": 1,
+        "found": [
+          "unchecked-call",
+          "unchecked-call"
+        ]
+      }
+    },
+    {
+      "case": "unchecked-math",
+      "labels": 1,
+      "slither": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "predictions": 0,
+        "precision": null,
+        "recall": 0,
+        "found": []
+      },
+      "auditlens": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predictions": 1,
+        "precision": 1,
+        "recall": 1,
+        "found": [
+          "overflow"
+        ]
+      }
+    },
+    {
+      "case": "unprotected-owner",
+      "labels": 2,
+      "slither": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 0,
+        "predictions": 3,
+        "precision": 0.6666666666666666,
+        "recall": 1,
+        "found": [
+          "selfdestruct",
+          "access-control"
+        ]
+      },
+      "auditlens": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 0,
+        "predictions": 4,
+        "precision": 0.6666666666666666,
+        "recall": 1,
+        "found": [
+          "selfdestruct",
+          "access-control"
+        ]
+      }
+    },
+    {
+      "case": "user-delegatecall",
+      "labels": 1,
+      "slither": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predictions": 2,
+        "precision": 1,
+        "recall": 1,
+        "found": [
+          "delegatecall"
+        ]
+      },
+      "auditlens": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predictions": 1,
+        "precision": 1,
+        "recall": 1,
+        "found": [
+          "delegatecall"
+        ]
+      }
+    },
+    {
+      "case": "weak-lottery",
+      "labels": 1,
+      "slither": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predictions": 1,
+        "precision": 1,
+        "recall": 1,
+        "found": [
+          "weak-randomness"
+        ]
+      },
+      "auditlens": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predictions": 1,
+        "precision": 1,
+        "recall": 1,
+        "found": [
+          "weak-randomness"
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "labels": 10,
+    "slither": {
+      "tp": 9,
+      "fp": 4,
+      "fn": 1,
+      "predictions": 14,
+      "precision": 0.6923076923076923,
+      "recall": 0.9
+    },
+    "auditlens": {
+      "tp": 10,
+      "fp": 3,
+      "fn": 0,
+      "predictions": 14,
+      "precision": 0.7692307692307693,
+      "recall": 1
+    }
+  }
+}

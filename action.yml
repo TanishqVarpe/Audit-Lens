@@ -1,0 +1,60 @@
+name: AuditLens PR review
+description: Audits the smart contract functions changed in a pull request (Slither + Gemma 4 + verification), comments the findings and blocks risky merges.
+branding:
+  icon: shield
+  color: yellow
+
+inputs:
+  path:
+    description: Folder with the contracts, relative to the repo root.
+    default: "."
+  fail-on:
+    description: Fail the check if a finding is at or above this severity (critical, high, medium, low, none).
+    default: high
+  solc-version:
+    description: solc version for Slither.
+    default: 0.8.20
+  github-token:
+    description: Token used to comment on the PR.
+    default: ${{ github.token }}
+  llm-api-key:
+    description: API key for the Gemma 4 endpoint (leave empty for a Slither-only review).
+    default: ""
+  llm-base-url:
+    description: OpenAI-compatible base URL serving Gemma 4.
+    default: ""
+  model:
+    description: Model name.
+    default: gemma-4-31b
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - name: Install Slither
+      shell: bash
+      run: |
+        pip install --quiet slither-analyzer solc-select
+        solc-select install ${{ inputs.solc-version }}
+        solc-select use ${{ inputs.solc-version }}
+    - name: Install AuditLens
+      shell: bash
+      working-directory: ${{ github.action_path }}
+      run: npm ci --no-audit --no-fund
+    - name: Audit changed functions
+      shell: bash
+      working-directory: ${{ github.action_path }}
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        AUDIT_PATH: ${{ inputs.path }}
+        FAIL_ON: ${{ inputs.fail-on }}
+        JARVIS_API_KEY: ${{ inputs.llm-api-key }}
+        JARVIS_BASE_URL: ${{ inputs.llm-base-url }}
+        GEMMA_MODEL: ${{ inputs.model }}
+        REPORTS_DIR: ${{ runner.temp }}/auditlens-reports
+      run: npx tsx scripts/ci.ts

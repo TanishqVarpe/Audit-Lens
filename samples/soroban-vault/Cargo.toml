@@ -1,0 +1,24 @@
+[package]
+name = "soroban-vault"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+soroban-sdk = "22.0.0"
+
+[dev-dependencies]
+soroban-sdk = { version = "22.0.0", features = ["testutils"] }
+
+[profile.release]
+opt-level = "z"
+# BUG 5 (config): overflow checks are off, so arithmetic wraps silently in release builds.
+overflow-checks = false
+debug = 0
+strip = "symbols"
+panic = "abort"
+codegen-units = 1
+lto = true

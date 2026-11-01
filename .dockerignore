@@ -1,0 +1,4 @@
+node_modules
+.next
+reports/*.json
+.env

@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-mocha-950 text-mocha-200 antialiased;
+  /* Soft lavender and warm mocha glows over the base. */
+  background-image:
+    radial-gradient(60rem 40rem at 85% -10%, rgb(196 181 236 / 0.10), transparent 60%),
+    radial-gradient(50rem 35rem at -10% 10%, rgb(164 120 100 / 0.14), transparent 60%),
+    radial-gradient(40rem 30rem at 50% 110%, rgb(229 228 226 / 0.05), transparent 60%);
+  background-attachment: fixed;
+}
+
+::selection {
+  @apply bg-lavender-400/30;
+}
+
+/* Metallic platinum text for headings. */
+.text-platinum-sheen {
+  background: linear-gradient(110deg, #c0c0c0 0%, #f4f3f1 30%, #a39b94 50%, #f4f3f1 70%, #c0c0c0 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated gradient border (conic), used on the audit panel. */
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.border-glow {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(rgb(42 32 27 / 0.92), rgb(42 32 27 / 0.92)) padding-box,
+    conic-gradient(from var(--border-angle), #4f3f36, #c4b5ec, #e5e4e2, #a47864, #4f3f36) border-box;
+}
+
+/* Glass panel. */
+.glass {
+  @apply border border-mocha-700/60 bg-mocha-900/60 backdrop-blur-md;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

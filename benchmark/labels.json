@@ -1,0 +1,15 @@
+{
+  "description": "Known bugs in benchmark/cases. 'match' is a snippet from the buggy line; its line is located at run time.",
+  "labels": [
+    { "case": "reentrancy-bank", "file": "Bank.sol", "match": "msg.sender.call{value: amount}(\"\");", "category": "reentrancy" },
+    { "case": "tx-origin-wallet", "file": "Wallet.sol", "match": "require(tx.origin == owner", "category": "tx-origin" },
+    { "case": "unprotected-owner", "file": "Treasury.sol", "match": "owner = newOwner;", "category": "access-control" },
+    { "case": "unprotected-owner", "file": "Treasury.sol", "match": "selfdestruct(payable(msg.sender));", "category": "selfdestruct" },
+    { "case": "unchecked-calls", "file": "Payout.sol", "match": "payable(msg.sender).send(amount);", "category": "unchecked-call" },
+    { "case": "unchecked-calls", "file": "Payout.sol", "match": "target.call{value: amount}(\"\");", "category": "unchecked-call" },
+    { "case": "user-delegatecall", "file": "Router.sol", "match": "module.delegatecall(data);", "category": "delegatecall" },
+    { "case": "weak-lottery", "file": "Lottery.sol", "match": "keccak256(abi.encodePacked(block.timestamp", "category": "weak-randomness" },
+    { "case": "unchecked-math", "file": "Points.sol", "match": "points[msg.sender] -= amount;", "category": "overflow" },
+    { "case": "airdrop-dos", "file": "Airdrop.sol", "match": "recipients[i].call{value: each}(\"\");", "category": "dos" }
+  ]
+}

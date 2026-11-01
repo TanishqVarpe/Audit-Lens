@@ -1,0 +1,26 @@
+# Copy to .github/workflows/auditlens.yml in your contracts repo.
+# Then make "AuditLens" a required status check (Settings → Branches) so a new
+# high-severity finding blocks the merge.
+name: AuditLens
+
+on:
+  pull_request:
+    paths: ["**/*.sol", "**/*.rs"]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # diff mode needs the base commit
+      - uses: manasshete/auditlens@main # the repo that contains action.yml
+        with:
+          path: contracts
+          fail-on: high
+          llm-api-key: ${{ secrets.JARVIS_API_KEY }}
+          llm-base-url: ${{ secrets.JARVIS_BASE_URL }}
